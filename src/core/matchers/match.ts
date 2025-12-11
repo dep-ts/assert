@@ -1,6 +1,6 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { assertString } from './string.ts';
-import { assertRegExp } from './regexp.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { assertString } from "./string.ts";
+import { assertRegExp } from "./regexp.ts";
 
 /**
  * Asserts that the received string matches the expected regular expression.
@@ -17,16 +17,17 @@ import { assertRegExp } from './regexp.ts';
 export function assertMatch(
   received: string,
   expected: RegExp,
-  message?: string
+  message?: string,
 ): asserts received is string {
   assertString(received);
   assertRegExp(expected);
 
-  if (received.match(expected) === null)
+  if (received.match(expected) === null) {
     throw new AssertionError({
-      code: 'NOT_MATCH',
+      code: "NOT_MATCH",
       message: message ?? `Expected "${received}" to match ${expected}`,
       received,
       expected,
     });
+  }
 }

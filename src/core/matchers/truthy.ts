@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is truthy.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertTruthy<T>(
   received: T,
-  message?: string
+  message?: string,
 ): asserts received is T {
-  if (!received)
+  if (!received) {
     throw new AssertionError({
-      code: 'NOT_TRUTHY',
-      message: message ?? 'Expected value to be truthy',
+      code: "NOT_TRUTHY",
+      message: message ?? "Expected value to be truthy",
       received,
-      expected: 'truthy',
+      expected: "truthy",
     });
+  }
 }

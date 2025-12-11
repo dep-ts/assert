@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is NaN.
@@ -13,12 +13,12 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertNaN(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is number {
   if (!Number.isNaN(received)) {
     throw new AssertionError({
-      code: 'NOT_NAN',
-      message: message ?? 'Expected value to be NaN',
+      code: "NOT_NAN",
+      message: message ?? "Expected value to be NaN",
       received,
       expected: NaN,
     });

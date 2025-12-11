@@ -61,6 +61,6 @@ export class AssertionError extends Error {
  *   received: 'bar',
  * });
  */
-export function assertionError(issue: Issue) {
+export function assertionError(issue: Issue): AssertionError {
   return new AssertionError(issue);
 }

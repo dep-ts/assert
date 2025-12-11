@@ -1,5 +1,5 @@
-import { AssertionError, Issue } from './error.ts';
-import { assertFunction } from '@/core/matchers/function.ts';
+import { AssertionError, Issue } from "./error.ts";
+import { assertFunction } from "@/core/matchers/function.ts";
 
 /**
  * Asserts that at least one of the provided assertions passes.
@@ -15,7 +15,7 @@ import { assertFunction } from '@/core/matchers/function.ts';
  * );
  */
 export function assertAnyOf(...assertions: Array<() => void>): void {
-  let issues: Array<Pick<Issue, 'expected' | 'received'>> = [];
+  let issues: Array<Pick<Issue, "expected" | "received">> = [];
 
   for (const assertion of assertions) {
     assertFunction(assertion);
@@ -33,11 +33,11 @@ export function assertAnyOf(...assertions: Array<() => void>): void {
   }
 
   if (issues.length > 0) {
-    const expected = issues.map((issue) => issue.expected).join(' | ');
+    const expected = issues.map((issue) => issue.expected).join(" | ");
     const received = issues[0].received;
 
     throw new AssertionError({
-      code: 'NOT_ANY_OF',
+      code: "NOT_ANY_OF",
       message: `Expected any of: ${expected}`,
       expected,
       received,

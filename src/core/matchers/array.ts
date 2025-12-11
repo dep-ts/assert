@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is an array.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertArray<T>(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is Array<T> {
-  if (!Array.isArray(received))
+  if (!Array.isArray(received)) {
     throw new AssertionError({
-      code: 'NOT_ARRAY',
-      message: message ?? 'Expected value to be an array',
+      code: "NOT_ARRAY",
+      message: message ?? "Expected value to be an array",
       received,
-      expected: 'array',
+      expected: "array",
     });
+  }
 }

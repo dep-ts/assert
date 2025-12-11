@@ -1,15 +1,18 @@
 # @dep/assert 🛡️
 
-> A comprehensive assertion library for JavaScript and TypeScript, providing type-safe and expressive assertions for testing and validation.
+> A comprehensive assertion library for JavaScript and TypeScript, providing
+> type-safe and expressive assertions for testing and validation.
 
 ## [![JSR version](https://jsr.io/badges/@dep/assert)](https://jsr.io/@dep/assert)
 
 ## Features ✨
 
 - 🧪 **Type-safe assertions** with automatic type narrowing in TypeScript
-- 🔍 **Comprehensive matchers** for primitives, objects, arrays, maps, sets, and more
+- 🔍 **Comprehensive matchers** for primitives, objects, arrays, maps, sets, and
+  more
 - 🚀 **Async support** with `assertResolves` and `assertRejects` utilities
-- 🧩 **Combinators** like `assertAnyOf` and `assertNoneOf` for complex conditions
+- 🧩 **Combinators** like `assertAnyOf` and `assertNoneOf` for complex
+  conditions
 - 📝 **Structured errors** with detailed diagnostic information for debugging
 
 ---
@@ -31,7 +34,7 @@
   Then import as an ES module:
 
   ```typescript
-  import { assertEqual, assertArray, assertTruthy } from '@dep/assert';
+  import { assertArray, assertEqual, assertTruthy } from "@dep/assert";
   ```
 
 ---
@@ -42,20 +45,20 @@
 
 ```typescript
 import {
-  assertEqual,
+  assertAnyOf,
   assertArray,
+  assertContain,
+  assertDeepEqual,
+  assertEqual,
+  assertGreaterThan,
+  assertRejects,
+  assertResolves,
   assertString,
   assertTruthy,
-  assertDeepEqual,
-  assertContain,
-  assertGreaterThan,
-  assertResolves,
-  assertRejects,
-  assertAnyOf,
-} from '@dep/assert';
+} from "@dep/assert";
 
 // Basic type assertions
-assertString('hello'); // Type narrowed to string
+assertString("hello"); // Type narrowed to string
 assertArray([1, 2, 3]); // Type narrowed to Array<unknown>
 
 // Equality checks
@@ -68,13 +71,13 @@ assertLessThanOrEqual(5, 10);
 
 // Collection checks
 assertContain([1, 2, 3], 2);
-assertContain('hello world', 'world');
+assertContain("hello world", "world");
 assertContain(new Set([1, 2, 3]), 2);
 
 // Length assertions
 assertLength([1, 2, 3], 3);
-assertLength('hello', 5);
-assertLength(new Map([['a', 1]]), 1);
+assertLength("hello", 5);
+assertLength(new Map([["a", 1]]), 1);
 
 // Async assertions
 await assertResolves(async () => {
@@ -82,7 +85,7 @@ await assertResolves(async () => {
 });
 
 await assertRejects(async () => {
-  throw new Error('Failed');
+  throw new Error("Failed");
 });
 
 // Combinators
@@ -90,7 +93,7 @@ const value: unknown = getValue();
 assertAnyOf(
   () => assertString(value),
   () => assertNumber(value),
-  () => assertArray(value)
+  () => assertArray(value),
 );
 
 // Proximity checks
@@ -104,15 +107,15 @@ assertDate(new Date());
 ### Custom Error Messages
 
 ```typescript
-assertEqual(getUser().age, 25, 'User should be 25 years old');
+assertEqual(getUser().age, 25, "User should be 25 years old");
 
-assertContain(getUser().roles, 'admin', 'User should have admin role');
+assertContain(getUser().roles, "admin", "User should have admin role");
 ```
 
 ### Structured Error Handling
 
 ```typescript
-import { AssertionError } from '@dep/assert';
+import { AssertionError } from "@dep/assert";
 
 try {
   assertEqual(1, 2);

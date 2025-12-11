@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a boolean.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertBoolean(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is boolean {
-  if (typeof received !== 'boolean')
+  if (typeof received !== "boolean") {
     throw new AssertionError({
-      code: 'NOT_BOOLEAN',
-      message: message ?? 'Expected value to be a boolean',
+      code: "NOT_BOOLEAN",
+      message: message ?? "Expected value to be a boolean",
       received,
-      expected: 'boolean',
+      expected: "boolean",
     });
+  }
 }

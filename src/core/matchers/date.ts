@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a Date instance.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertDate(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is Date {
-  if (!(received instanceof Date))
+  if (!(received instanceof Date)) {
     throw new AssertionError({
-      code: 'NOT_DATE',
-      message: message ?? 'Expected value to be a date',
+      code: "NOT_DATE",
+      message: message ?? "Expected value to be a date",
       received,
-      expected: 'date',
+      expected: "date",
     });
+  }
 }

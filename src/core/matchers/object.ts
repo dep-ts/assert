@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a plain object.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertObject(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is object {
-  if (Object.prototype.toString.call(received) !== '[object Object]')
+  if (Object.prototype.toString.call(received) !== "[object Object]") {
     throw new AssertionError({
-      code: 'NOT_OBJECT',
-      message: message ?? 'Expected value to be an object',
+      code: "NOT_OBJECT",
+      message: message ?? "Expected value to be an object",
       received,
-      expected: 'object',
+      expected: "object",
     });
+  }
 }

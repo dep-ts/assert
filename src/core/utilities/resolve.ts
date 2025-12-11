@@ -1,4 +1,4 @@
-import { AssertionError } from './error.ts';
+import { AssertionError } from "./error.ts";
 
 /**
  * Asserts that the provided async function resolves successfully.
@@ -15,16 +15,16 @@ import { AssertionError } from './error.ts';
  */
 export async function assertResolves(
   fn: () => Promise<unknown>,
-  message?: string
+  message?: string,
 ): Promise<void> {
   try {
     await fn();
   } catch {
     throw new AssertionError({
-      code: 'NOT_RESOLVED',
-      message: message ?? 'Expected function to resolve',
-      expected: 'a resolution',
-      received: 'a rejection',
+      code: "NOT_RESOLVED",
+      message: message ?? "Expected function to resolve",
+      expected: "a resolution",
+      received: "a rejection",
     });
   }
 }

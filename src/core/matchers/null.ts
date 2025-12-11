@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is null.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertNull(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is null {
-  if (received !== null)
+  if (received !== null) {
     throw new AssertionError({
-      code: 'NOT_NULL',
-      message: message ?? 'Expected value to be null',
+      code: "NOT_NULL",
+      message: message ?? "Expected value to be null",
       received,
       expected: null,
     });
+  }
 }

@@ -1,13 +1,13 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { assertString } from './string.ts';
-import { assertArray } from './array.ts';
-import { assertMap } from './map.ts';
-import { assertSet } from './set.ts';
-import { assertNumber } from './number.ts';
-import { assertSymbol } from './symbol.ts';
-import { assertObject } from './object.ts';
-import { assertAnyOf } from '@/core/utilities/any.ts';
-import { format } from '@/internals/format.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { assertString } from "./string.ts";
+import { assertArray } from "./array.ts";
+import { assertMap } from "./map.ts";
+import { assertSet } from "./set.ts";
+import { assertNumber } from "./number.ts";
+import { assertSymbol } from "./symbol.ts";
+import { assertObject } from "./object.ts";
+import { assertAnyOf } from "@/core/utilities/any.ts";
+import { format } from "@/internals/format.ts";
 
 /**
  * Asserts that the received value contains the expected element or key.
@@ -33,11 +33,11 @@ export function assertContain<
     | Array<unknown>
     | Record<PropertyKey, unknown>
     | Set<unknown>
-    | Map<unknown, unknown>
+    | Map<unknown, unknown>,
 >(
   received: unknown,
   expected: unknown,
-  message?: string
+  message?: string,
 ): asserts received is T {
   let label;
   let valid = false;
@@ -47,42 +47,42 @@ export function assertContain<
     () => assertArray(received),
     () => assertObject(received),
     () => assertMap(received),
-    () => assertSet(received)
+    () => assertSet(received),
   );
 
-  if (typeof received === 'string') {
-    label = 'string';
+  if (typeof received === "string") {
+    label = "string";
     assertString(expected);
     valid = received.includes(expected);
   }
 
   if (Array.isArray(received)) {
-    label = 'array';
+    label = "array";
     valid = received.includes(expected);
   }
 
-  if (Object.prototype.toString.call(received) === '[object Object]') {
-    label = 'object';
+  if (Object.prototype.toString.call(received) === "[object Object]") {
+    label = "object";
 
     assertAnyOf(
       () => assertString(received),
       () => assertNumber(received),
-      () => assertSymbol(received)
+      () => assertSymbol(received),
     );
 
     valid = Object.prototype.hasOwnProperty.call(
       received,
-      expected as PropertyKey
+      expected as PropertyKey,
     );
   }
 
   if (received instanceof Set) {
-    label = 'set';
+    label = "set";
     valid = received.has(expected);
   }
 
   if (received instanceof Map) {
-    label = 'map';
+    label = "map";
     valid = received.has(expected);
   }
 

@@ -1,11 +1,11 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { assertString } from './string.ts';
-import { assertArray } from './array.ts';
-import { assertMap } from './map.ts';
-import { assertSet } from './set.ts';
-import { assertNumber } from './number.ts';
-import { assertObject } from './object.ts';
-import { assertAnyOf } from '@/core/utilities/any.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { assertString } from "./string.ts";
+import { assertArray } from "./array.ts";
+import { assertMap } from "./map.ts";
+import { assertSet } from "./set.ts";
+import { assertNumber } from "./number.ts";
+import { assertObject } from "./object.ts";
+import { assertAnyOf } from "@/core/utilities/any.ts";
 
 /**
  * Asserts that the received value has the exact expected length.
@@ -30,11 +30,11 @@ export function assertLength<
     | Array<unknown>
     | Record<PropertyKey, unknown>
     | Set<unknown>
-    | Map<unknown, unknown>
+    | Map<unknown, unknown>,
 >(
   received: unknown,
   expected: number,
-  message?: string
+  message?: string,
 ): asserts received is T {
   let label: undefined | string;
   let valid: boolean = false;
@@ -45,32 +45,32 @@ export function assertLength<
     () => assertArray(received),
     () => assertObject(received),
     () => assertMap(received),
-    () => assertSet(received)
+    () => assertSet(received),
   );
 
-  if (typeof received === 'string') {
-    label = 'string';
+  if (typeof received === "string") {
+    label = "string";
     assertString(expected);
     valid = received.length === expected;
   }
 
   if (Array.isArray(received)) {
-    label = 'array';
+    label = "array";
     valid = received.length === expected;
   }
 
-  if (Object.prototype.toString.call(received) === '[object Object]') {
-    label = 'object';
+  if (Object.prototype.toString.call(received) === "[object Object]") {
+    label = "object";
     valid = Object.keys(received as object).length === expected;
   }
 
   if (received instanceof Set) {
-    label = 'set';
+    label = "set";
     valid = received.size === expected;
   }
 
   if (received instanceof Map) {
-    label = 'map';
+    label = "map";
     valid = received.size === expected;
   }
 

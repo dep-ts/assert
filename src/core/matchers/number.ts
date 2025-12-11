@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a number.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertNumber(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is number {
-  if (typeof received !== 'number')
+  if (typeof received !== "number") {
     throw new AssertionError({
-      code: 'NOT_NUMBER',
-      message: message ?? 'Expected value to be a number',
+      code: "NOT_NUMBER",
+      message: message ?? "Expected value to be a number",
       received,
-      expected: 'number',
+      expected: "number",
     });
+  }
 }

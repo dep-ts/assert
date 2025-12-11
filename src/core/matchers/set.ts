@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a Set instance.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertSet<T>(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is Set<T> {
-  if (!(received instanceof Set))
+  if (!(received instanceof Set)) {
     throw new AssertionError({
-      code: 'NOT_SET',
-      message: message ?? 'Expected value to be a set',
+      code: "NOT_SET",
+      message: message ?? "Expected value to be a set",
       received,
-      expected: 'set',
+      expected: "set",
     });
+  }
 }

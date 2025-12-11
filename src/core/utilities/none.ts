@@ -1,5 +1,5 @@
-import { AssertionError } from './error.ts';
-import { assertFunction } from '@/core/matchers/function.ts';
+import { AssertionError } from "./error.ts";
+import { assertFunction } from "@/core/matchers/function.ts";
 
 /**
  * Asserts that none of the provided assertions pass.
@@ -30,11 +30,13 @@ export function assertNoneOf(...assertions: Array<() => void>): void {
     }
   }
 
-  if (passed)
+  if (passed) {
     throw new AssertionError({
-      code: 'UNEXPECTED_PASS',
-      message: `Assertion at index ${index} unexpectedly passed (it should have failed)`,
-      expected: 'assertion to fail',
-      received: 'assertion passed',
+      code: "UNEXPECTED_PASS",
+      message:
+        `Assertion at index ${index} unexpectedly passed (it should have failed)`,
+      expected: "assertion to fail",
+      received: "assertion passed",
     });
+  }
 }

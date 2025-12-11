@@ -1,5 +1,5 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { assertNumber } from './number.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { assertNumber } from "./number.ts";
 
 /**
  * Asserts that a number is close to another number within a given tolerance.
@@ -18,7 +18,7 @@ export function assertCloseTo(
   received: number,
   expected: number,
   tolerance = 1e-7,
-  message?: string
+  message?: string,
 ): asserts received is number {
   assertNumber(received, message);
   assertNumber(expected, message);
@@ -27,9 +27,8 @@ export function assertCloseTo(
   const diff = Math.abs(received - expected);
   if (diff > tolerance) {
     throw new AssertionError({
-      code: 'NOT_CLOSE_TO',
-      message:
-        message ??
+      code: "NOT_CLOSE_TO",
+      message: message ??
         `Expected ${received} to be close to ${expected} (±${tolerance})`,
       received,
       expected,

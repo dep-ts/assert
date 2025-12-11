@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is not undefined.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertDefined<T>(
   received: T,
-  message?: string
+  message?: string,
 ): asserts received is T {
-  if (typeof received === 'undefined')
+  if (typeof received === "undefined") {
     throw new AssertionError({
-      code: 'NOT_DEFINED',
-      message: message ?? 'Expected value to be defined',
+      code: "NOT_DEFINED",
+      message: message ?? "Expected value to be defined",
       received,
-      expected: 'defined',
+      expected: "defined",
     });
+  }
 }

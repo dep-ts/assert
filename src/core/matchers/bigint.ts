@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a bigint.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertBigint(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is bigint {
-  if (typeof received !== 'bigint')
+  if (typeof received !== "bigint") {
     throw new AssertionError({
-      code: 'NOT_BIGINT',
-      message: message ?? 'Expected value to be a bigint',
+      code: "NOT_BIGINT",
+      message: message ?? "Expected value to be a bigint",
       received,
-      expected: 'bigint',
+      expected: "bigint",
     });
+  }
 }

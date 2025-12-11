@@ -1,5 +1,5 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { format } from '@/internals/format.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { format } from "@/internals/format.ts";
 
 /**
  * Asserts that two values are strictly equal using `Object.is`.
@@ -16,14 +16,15 @@ import { format } from '@/internals/format.ts';
 export function assertEqual<T>(
   received: unknown,
   expected: T,
-  message?: string
+  message?: string,
 ): asserts received is T {
-  if (!Object.is(received, expected))
+  if (!Object.is(received, expected)) {
     throw new AssertionError({
-      code: 'NOT_EQUAL',
-      message:
-        message ?? `Expected ${format(received)}, but got ${format(expected)}`,
+      code: "NOT_EQUAL",
+      message: message ??
+        `Expected ${format(received)}, but got ${format(expected)}`,
       received,
       expected,
     });
+  }
 }

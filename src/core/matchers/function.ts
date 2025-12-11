@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a function.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertFunction(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is (...args: unknown[]) => unknown {
-  if (typeof received !== 'function')
+  if (typeof received !== "function") {
     throw new AssertionError({
-      code: 'NOT_FUNCTION',
-      message: message ?? 'Expected value to be a function',
+      code: "NOT_FUNCTION",
+      message: message ?? "Expected value to be a function",
       received,
-      expected: 'function',
+      expected: "function",
     });
+  }
 }

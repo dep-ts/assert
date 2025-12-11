@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is falsy.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertFalsy<T>(
   received: T,
-  message?: string
+  message?: string,
 ): asserts received is T {
-  if (received)
+  if (received) {
     throw new AssertionError({
-      code: 'NOT_FALSY',
-      message: message ?? 'Expected value to be falsy',
+      code: "NOT_FALSY",
+      message: message ?? "Expected value to be falsy",
       received,
-      expected: 'falsy',
+      expected: "falsy",
     });
+  }
 }

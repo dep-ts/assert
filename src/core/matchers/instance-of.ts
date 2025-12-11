@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is an instance of the given constructor.
@@ -18,13 +18,14 @@ export function assertInstanceOf<T>(
   received: unknown,
   // deno-lint-ignore no-explicit-any
   expected: new (...args: any[]) => T,
-  message: string
+  message: string,
 ): asserts received is T {
-  if (!(received instanceof expected))
+  if (!(received instanceof expected)) {
     throw new AssertionError({
-      code: 'NOT_INSTANCE_OF',
+      code: "NOT_INSTANCE_OF",
       message: message ?? `Expected an instance of ${expected.name}`,
       received,
       expected,
     });
+  }
 }

@@ -1,7 +1,7 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { assertAnyOf } from '@/core/utilities/any.ts';
-import { assertNumber } from './number.ts';
-import { assertBigint } from './bigint.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { assertAnyOf } from "@/core/utilities/any.ts";
+import { assertNumber } from "./number.ts";
+import { assertBigint } from "./bigint.ts";
 
 /**
  * Asserts that the received value is less than the expected number or bigint.
@@ -20,23 +20,24 @@ import { assertBigint } from './bigint.ts';
 export function assertLessThan<T extends number | bigint>(
   received: unknown,
   expected: T,
-  message?: string
+  message?: string,
 ): asserts received is T extends number ? number : bigint {
   assertAnyOf(
     () => assertNumber(received),
-    () => assertBigint(received)
+    () => assertBigint(received),
   );
 
   assertAnyOf(
     () => assertNumber(expected),
-    () => assertBigint(expected)
+    () => assertBigint(expected),
   );
 
-  if (!((received as number | bigint) < expected))
+  if (!((received as number | bigint) < expected)) {
     throw new AssertionError({
-      code: 'NOT_LESS_THAN',
+      code: "NOT_LESS_THAN",
       message: message ?? `Expected ${received} to be less than ${expected}`,
       received,
       expected,
     });
+  }
 }

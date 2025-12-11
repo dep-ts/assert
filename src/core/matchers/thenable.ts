@@ -1,6 +1,6 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { assertFunction } from './function.ts';
-import { assertObject } from './object.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { assertFunction } from "./function.ts";
+import { assertObject } from "./object.ts";
 
 /**
  * Asserts that the received value is a thenable (i.e., has a `then` method).
@@ -15,17 +15,18 @@ import { assertObject } from './object.ts';
  */
 export function assertThenable<T>(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is PromiseLike<T> {
   assertObject(received, message);
 
-  if (!('then' in received))
+  if (!("then" in received)) {
     throw new AssertionError({
-      code: 'NOT_THENABLE',
-      message: message ?? 'Expected value to be thenable',
+      code: "NOT_THENABLE",
+      message: message ?? "Expected value to be thenable",
       received,
-      expected: 'thenable',
+      expected: "thenable",
     });
+  }
 
   assertFunction(received.then, message);
 }

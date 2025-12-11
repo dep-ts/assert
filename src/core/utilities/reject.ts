@@ -1,4 +1,4 @@
-import { AssertionError } from './error.ts';
+import { AssertionError } from "./error.ts";
 
 /**
  * Asserts that the provided async function rejects.
@@ -15,7 +15,7 @@ import { AssertionError } from './error.ts';
  */
 export async function assertRejects(
   fn: () => Promise<unknown>,
-  message?: string
+  message?: string,
 ): Promise<void> {
   let notRejected = false;
 
@@ -26,11 +26,12 @@ export async function assertRejects(
     //
   }
 
-  if (notRejected)
+  if (notRejected) {
     throw new AssertionError({
-      code: 'NOT_REJECTED',
-      message: message ?? 'Expected function to reject',
-      expected: 'a rejection',
-      received: 'no rejection',
+      code: "NOT_REJECTED",
+      message: message ?? "Expected function to reject",
+      expected: "a rejection",
+      received: "no rejection",
     });
+  }
 }

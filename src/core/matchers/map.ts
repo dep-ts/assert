@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a Map instance.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertMap<K, V>(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is Map<K, V> {
-  if (!(received instanceof Map))
+  if (!(received instanceof Map)) {
     throw new AssertionError({
-      code: 'NOT_MAP',
-      message: message ?? 'Expected value to be a map',
+      code: "NOT_MAP",
+      message: message ?? "Expected value to be a map",
       received,
-      expected: 'map',
+      expected: "map",
     });
+  }
 }

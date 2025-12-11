@@ -1,4 +1,4 @@
-import { AssertionError } from './error.ts';
+import { AssertionError } from "./error.ts";
 
 /**
  * Asserts that the provided function throws an error when called.
@@ -15,7 +15,7 @@ import { AssertionError } from './error.ts';
  */
 export function assertThrow(
   fn: () => void,
-  message: string = 'Expected function to throw'
+  message: string = "Expected function to throw",
 ): void {
   let notThrown = false;
   try {
@@ -25,11 +25,12 @@ export function assertThrow(
     //
   }
 
-  if (notThrown)
+  if (notThrown) {
     throw new AssertionError({
-      code: 'NOT_THROWN',
+      code: "NOT_THROWN",
       message,
-      expected: 'an error',
-      received: 'no error',
+      expected: "an error",
+      received: "no error",
     });
+  }
 }

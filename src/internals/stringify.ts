@@ -13,8 +13,8 @@
 export function stringify(
   value: unknown,
   replacer = (_: unknown, val: unknown) =>
-    typeof val === 'bigint' ? `${val}n` : Number.isNaN(val) ? 'NaN' : val,
-  space?: string | number
+    typeof val === "bigint" ? `${val}n` : Number.isNaN(val) ? "NaN" : val,
+  space?: string | number,
 ): string {
   return JSON.stringify(value, replacer, space);
 }

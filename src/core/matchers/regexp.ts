@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a RegExp instance.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertRegExp(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is RegExp {
-  if (!(received instanceof RegExp))
+  if (!(received instanceof RegExp)) {
     throw new AssertionError({
-      code: 'NOT_REG_EXP',
-      message: message ?? 'Expected value to be a regexp',
+      code: "NOT_REG_EXP",
+      message: message ?? "Expected value to be a regexp",
       received,
-      expected: 'regexp',
+      expected: "regexp",
     });
+  }
 }

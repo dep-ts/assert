@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a symbol.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertSymbol(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is symbol {
-  if (typeof received !== 'symbol')
+  if (typeof received !== "symbol") {
     throw new AssertionError({
-      code: 'NOT_SYMBOL',
-      message: message ?? 'Expected value to be a symbol',
+      code: "NOT_SYMBOL",
+      message: message ?? "Expected value to be a symbol",
       received,
-      expected: 'symbol',
+      expected: "symbol",
     });
+  }
 }

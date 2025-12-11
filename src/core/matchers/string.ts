@@ -1,4 +1,4 @@
-import { AssertionError } from '@/core/utilities/error.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
 
 /**
  * Asserts that the received value is a string.
@@ -13,13 +13,14 @@ import { AssertionError } from '@/core/utilities/error.ts';
  */
 export function assertString(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is string {
-  if (typeof received !== 'string')
+  if (typeof received !== "string") {
     throw new AssertionError({
-      code: 'NOT_STRING',
-      message: message ?? 'Expected value to be a string',
+      code: "NOT_STRING",
+      message: message ?? "Expected value to be a string",
       received,
-      expected: 'string',
+      expected: "string",
     });
+  }
 }

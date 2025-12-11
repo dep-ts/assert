@@ -1,5 +1,5 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { format } from '@/internals/format.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { format } from "@/internals/format.ts";
 
 /**@private */
 function isDeepEqual(a: unknown, b: unknown): boolean {
@@ -13,13 +13,15 @@ function isDeepEqual(a: unknown, b: unknown): boolean {
   if (typeof a !== typeof b) return false;
 
   // Date
-  if (a instanceof Date && b instanceof Date)
+  if (a instanceof Date && b instanceof Date) {
     return a.getTime() === b.getTime();
+  }
   if (a instanceof Date || b instanceof Date) return false;
 
   // RegExp
-  if (a instanceof RegExp && b instanceof RegExp)
+  if (a instanceof RegExp && b instanceof RegExp) {
     return a.toString() === b.toString();
+  }
   if (a instanceof RegExp || b instanceof RegExp) return false;
 
   // Arrays
@@ -49,7 +51,7 @@ function isDeepEqual(a: unknown, b: unknown): boolean {
   if (a instanceof Set || b instanceof Set) return false;
 
   // Plain objects
-  if (typeof a === 'object' && typeof b === 'object' && a && b) {
+  if (typeof a === "object" && typeof b === "object" && a && b) {
     const keysA = Object.keys(a);
     const keysB = Object.keys(b);
 
@@ -60,8 +62,8 @@ function isDeepEqual(a: unknown, b: unknown): boolean {
         Object.hasOwn(b, key) &&
         isDeepEqual(
           (a as Record<string, unknown>)[key],
-          (b as Record<string, unknown>)[key]
-        )
+          (b as Record<string, unknown>)[key],
+        ),
     );
   }
 
@@ -84,13 +86,12 @@ function isDeepEqual(a: unknown, b: unknown): boolean {
 export function assertDeepEqual<T>(
   received: unknown,
   expected: T,
-  message?: string
+  message?: string,
 ): asserts received is T {
   if (!isDeepEqual(received, expected)) {
     throw new AssertionError({
-      code: 'NOT_DEEP_EQUAL',
-      message:
-        message ??
+      code: "NOT_DEEP_EQUAL",
+      message: message ??
         `Expected deep equal ${format(received)}, but got ${format(expected)}`,
       expected,
       received,

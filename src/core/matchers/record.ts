@@ -1,5 +1,5 @@
-import { AssertionError } from '@/core/utilities/error.ts';
-import { assertObject } from './object.ts';
+import { AssertionError } from "@/core/utilities/error.ts";
+import { assertObject } from "./object.ts";
 
 /**
  * Asserts that the received value is a plain record object.
@@ -14,15 +14,15 @@ import { assertObject } from './object.ts';
  */
 export function assertRecord(
   received: unknown,
-  message?: string
+  message?: string,
 ): asserts received is Record<PropertyKey, unknown> {
   assertObject(received, message);
   if (received?.constructor !== Object) {
     throw new AssertionError({
-      code: 'NOT_RECORD',
-      message: message ?? 'Expected value to be a record',
+      code: "NOT_RECORD",
+      message: message ?? "Expected value to be a record",
       received,
-      expected: 'record',
+      expected: "record",
     });
   }
 }
