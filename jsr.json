@@ -1,0 +1,20 @@
+{
+  "name": "@dep/assert",
+  "version": "1.0.0",
+  "description": "Lightweight assertion utilities for JavaScript/TypeScript",
+  "exports": "./src/mod.ts",
+  "author": {
+    "name": "Estarlin R.",
+    "email": "dev@estarlincito.com",
+    "url": "https://estarlincito.com"
+  },
+  "homepage": "https://github.com/dep-ts/assert#readme",
+  "repository": "https://github.com/dep-ts/assert",
+  "bugs": "https://github.com/dep-ts/assert/issues",
+  "keywords": ["assert", "testing", "validation", "typescript", "javascript"],
+  "license": "MIT",
+  "publish": {
+    "include": ["src", "LICENSE", "README.md"],
+    "exclude": ["**/tests/**"]
+  }
+}
