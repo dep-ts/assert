@@ -38,12 +38,13 @@ export class AssertionError extends Error {
    * @param issue - The assertion issue details..
    */
   constructor({ code, expected, message, received }: Issue) {
-    const fullMessage = `${code}: ${message}\nExpected: ${expected}\nReceived: ${received}`;
+    const fullMessage =
+      `${code}: ${message}\nExpected: ${expected}\nReceived: ${received}`;
     super(fullMessage);
     this.code = code;
     this.expected = expected;
     this.received = received;
-    this.name = 'AssertionError';
+    this.name = "AssertionError";
   }
 }
 

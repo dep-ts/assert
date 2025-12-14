@@ -18,7 +18,7 @@ export function assertInstanceOf<T>(
   received: unknown,
   // deno-lint-ignore no-explicit-any
   expected: new (...args: any[]) => T,
-  message: string,
+  message?: string,
 ): asserts received is T {
   if (!(received instanceof expected)) {
     throw new AssertionError({

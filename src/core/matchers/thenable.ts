@@ -11,7 +11,7 @@ import { assertObject } from "./object.ts";
  * @returns {asserts received is PromiseLike<T>} Narrows the type to a Promise-like value.
  *
  * @example
- * assertThenable(Promise.resolve(1));
+ * assertThenable({ then: () => {} });
  */
 export function assertThenable<T>(
   received: unknown,

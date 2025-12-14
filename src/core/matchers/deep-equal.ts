@@ -1,5 +1,5 @@
 import { AssertionError } from "@/core/utilities/error.ts";
-import { format } from "@/internals/format.ts";
+import { format } from "@/private/format.ts";
 
 /**@private */
 function isDeepEqual(a: unknown, b: unknown): boolean {

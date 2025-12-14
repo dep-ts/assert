@@ -1,5 +1,5 @@
 import { AssertionError } from "@/core/utilities/error.ts";
-import { format } from "@/internals/format.ts";
+import { format } from "@/private/format.ts";
 
 /**
  * Asserts that two values are strictly equal using `Object.is`.

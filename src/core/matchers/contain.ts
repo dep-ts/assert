@@ -7,7 +7,7 @@ import { assertNumber } from "./number.ts";
 import { assertSymbol } from "./symbol.ts";
 import { assertObject } from "./object.ts";
 import { assertAnyOf } from "@/core/utilities/any.ts";
-import { format } from "@/internals/format.ts";
+import { format } from "@/private/format.ts";
 
 /**
  * Asserts that the received value contains the expected element or key.
@@ -65,9 +65,9 @@ export function assertContain<
     label = "object";
 
     assertAnyOf(
-      () => assertString(received),
-      () => assertNumber(received),
-      () => assertSymbol(received),
+      () => assertString(expected),
+      () => assertNumber(expected),
+      () => assertSymbol(expected),
     );
 
     valid = Object.prototype.hasOwnProperty.call(

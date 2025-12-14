@@ -19,10 +19,10 @@ import { assertAnyOf } from "@/core/utilities/any.ts";
  *
  * @example
  * assertLength([1, 2, 3], 3);
- * assertContain('hello', 5);
- * assertContain({ key: 'value' }, 1);
- * assertContain(new Set([1, 2]), 2);
- * assertContain(new Map([['a', 1]]), 1);
+ * assertLength('hello', 5);
+ * assertLength({ key: 'value' }, 1);
+ * assertLength(new Set([1, 2]), 2);
+ * assertLength(new Map([['a', 1]]), 1);
  */
 export function assertLength<
   T extends
@@ -50,7 +50,6 @@ export function assertLength<
 
   if (typeof received === "string") {
     label = "string";
-    assertString(expected);
     valid = received.length === expected;
   }
 
