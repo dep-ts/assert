@@ -14,13 +14,14 @@ import { assertObject } from "./object.ts";
  */
 export function assertRecord(
   received: unknown,
-  message?: string,
+  message: string = "Expected value to be a plain record object",
 ): asserts received is Record<PropertyKey, unknown> {
   assertObject(received, message);
-  if (received?.constructor !== Object) {
+  const proto = Object.getPrototypeOf(received);
+  if (proto !== null && proto !== Object.prototype) {
     throw new AssertionError({
       code: "NOT_RECORD",
-      message: message ?? "Expected value to be a record",
+      message,
       received,
       expected: "record",
     });

@@ -142,8 +142,8 @@ try {
 - `assertFunction` - Checks if value is a function
 - `assertMap` - Checks if value is a Map
 - `assertNumber` - Checks if value is a number
-- `assertObject` - Checks if value is a plain object
-- `assertRecord` - Checks if value is a record
+- `assertObject` - Checks if value is a object (non-null, non-array)
+- `assertRecord` - Checks if value is a plain record object
 - `assertRegExp` - Checks if value is a RegExp
 - `assertSet` - Checks if value is a Set
 - `assertString` - Checks if value is a string
